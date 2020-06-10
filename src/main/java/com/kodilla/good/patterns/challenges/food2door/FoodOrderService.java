@@ -1,16 +1,16 @@
 package com.kodilla.good.patterns.challenges.food2door;
 
 import com.kodilla.good.patterns.challenges.food2door.data.Food;
-import com.kodilla.good.patterns.challenges.food2door.data.Man;
-import com.kodilla.good.patterns.challenges.food2door.services.FoodSupplier;
-import com.kodilla.good.patterns.challenges.food2door.services.InformationService;
+import com.kodilla.good.patterns.challenges.food2door.data.FoodCustomer;
+import com.kodilla.good.patterns.challenges.food2door.services.requirements.FoodSupplierRequirements;
+import com.kodilla.good.patterns.challenges.food2door.services.requirements.InformationService;
 
 
 public class FoodOrderService {
     private InformationService informationService;
-    private FoodSupplier foodSupplier;
+    private FoodSupplierRequirements foodSupplier;
 
-    public FoodOrderService(InformationService informationService, FoodSupplier foodSupplier) {
+    public FoodOrderService(InformationService informationService, FoodSupplierRequirements foodSupplier) {
         this.informationService = informationService;
         this.foodSupplier = foodSupplier;
     }
@@ -24,10 +24,10 @@ public class FoodOrderService {
         foodSupplier.addNewFood(food2);
     }
 
-    public boolean orderProcess(Food product, Man customer, int quantity) {
-        if (foodSupplier.process(product, customer, quantity)) {
+    public boolean orderProcess(Food product, FoodCustomer customer, int quantity) {
+        if (foodSupplier.isPossibleToOrder(product, customer, quantity)) {
             informationService.inform(customer, true);
-            informationService.inform(foodSupplier.getSupplier(), true);
+            informationService.inform(foodSupplier.getFoodSupplier(), true);
             return true;
         } else {
             informationService.inform(customer, false);

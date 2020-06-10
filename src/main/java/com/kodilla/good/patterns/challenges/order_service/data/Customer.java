@@ -1,6 +1,6 @@
 package com.kodilla.good.patterns.challenges.order_service.data;
 
-public class Customer implements Person{
+public class Customer implements HasEmailData {
     private String name;
     private String address;
     private String email;

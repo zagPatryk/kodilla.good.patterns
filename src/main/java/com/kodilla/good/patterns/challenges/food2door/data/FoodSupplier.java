@@ -1,11 +1,14 @@
 package com.kodilla.good.patterns.challenges.food2door.data;
 
-public class Man implements ManOrCompany {
+import com.kodilla.good.patterns.challenges.food2door.data.requirements.AddressRequirement;
+import com.kodilla.good.patterns.challenges.food2door.data.requirements.MailRequirement;
+
+public class FoodSupplier implements MailRequirement, AddressRequirement {
     private String name;
     private String address;
     private String email;
 
-    public Man(String name, String address, String email) {
+    public FoodSupplier(String name, String address, String email) {
         this.name = name;
         this.address = address;
         this.email = email;
@@ -15,6 +18,7 @@ public class Man implements ManOrCompany {
         return name;
     }
 
+    @Override
     public String getAddress() {
         return address;
     }

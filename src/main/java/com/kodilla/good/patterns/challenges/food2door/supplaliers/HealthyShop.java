@@ -1,20 +1,20 @@
 package com.kodilla.good.patterns.challenges.food2door.supplaliers;
 
 import com.kodilla.good.patterns.challenges.food2door.data.Food;
-import com.kodilla.good.patterns.challenges.food2door.data.Man;
-import com.kodilla.good.patterns.challenges.food2door.data.Supplier;
-import com.kodilla.good.patterns.challenges.food2door.services.FoodSupplier;
+import com.kodilla.good.patterns.challenges.food2door.data.FoodCustomer;
+import com.kodilla.good.patterns.challenges.food2door.data.FoodSupplier;
+import com.kodilla.good.patterns.challenges.food2door.services.requirements.FoodSupplierRequirements;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HealthyShop implements FoodSupplier {
-    private Supplier supplier = new Supplier("HealthyShop","Rz","inf@HealthyShop.com");
+public class HealthyShop implements FoodSupplierRequirements {
+    private FoodSupplier supplier = new FoodSupplier("HealthyShop","Rz","inf@HealthyShop.com");
     private List<Food> foodsList = new ArrayList<>();
 
     @Override
-    public Supplier getSupplier() {
+    public FoodSupplier getFoodSupplier() {
         return supplier;
     }
 
@@ -36,7 +36,7 @@ public class HealthyShop implements FoodSupplier {
     }
 
     @Override
-    public boolean process(Food food, Man customer, int quantity) {
+    public boolean isPossibleToOrder(Food food, FoodCustomer customer, int quantity) {
         if (foodsList.contains(food)) {
             if (quantity<20) {
                 return false;
