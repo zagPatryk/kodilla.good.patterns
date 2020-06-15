@@ -1,9 +1,9 @@
-package com.kodilla.good.patterns.challenges.order_service;
+package com.kodilla.good.patterns.challenges.allegro;
 
-import com.kodilla.good.patterns.challenges.order_service.data.Customer;
-import com.kodilla.good.patterns.challenges.order_service.data.Product;
-import com.kodilla.good.patterns.challenges.order_service.services.InformationService;
-import com.kodilla.good.patterns.challenges.order_service.services.ServiceRepository;
+import com.kodilla.good.patterns.challenges.allegro.data.Customer;
+import com.kodilla.good.patterns.challenges.allegro.data.Product;
+import com.kodilla.good.patterns.challenges.allegro.services.InformationService;
+import com.kodilla.good.patterns.challenges.allegro.services.ServiceRepository;
 
 public class ProductOrderService {
     private InformationService informationService;

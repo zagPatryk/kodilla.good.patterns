@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.movie_store;
+package com.kodilla.good.patterns.challenges.movie;
 
 import java.util.*;
 import java.util.stream.Collectors;

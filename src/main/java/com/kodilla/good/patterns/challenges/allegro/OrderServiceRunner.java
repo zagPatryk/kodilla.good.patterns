@@ -1,9 +1,9 @@
-package com.kodilla.good.patterns.challenges.order_service;
+package com.kodilla.good.patterns.challenges.allegro;
 
-import com.kodilla.good.patterns.challenges.order_service.data.Customer;
-import com.kodilla.good.patterns.challenges.order_service.data.Product;
-import com.kodilla.good.patterns.challenges.order_service.services.MailService;
-import com.kodilla.good.patterns.challenges.order_service.services.Repository;
+import com.kodilla.good.patterns.challenges.allegro.data.Customer;
+import com.kodilla.good.patterns.challenges.allegro.data.Product;
+import com.kodilla.good.patterns.challenges.allegro.services.MailService;
+import com.kodilla.good.patterns.challenges.allegro.services.Repository;
 
 public class OrderServiceRunner {
     public static void main(String[] args) {

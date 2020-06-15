@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.order_service.data;
+package com.kodilla.good.patterns.challenges.allegro.data;
 
 public class Customer implements HasEmailData {
     private String name;

@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.order_service.data;
+package com.kodilla.good.patterns.challenges.allegro.data;
 
 import java.util.Objects;
 

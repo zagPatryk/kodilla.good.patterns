@@ -1,6 +1,6 @@
-package com.kodilla.good.patterns.challenges.order_service.services;
+package com.kodilla.good.patterns.challenges.allegro.services;
 
-import com.kodilla.good.patterns.challenges.order_service.data.Product;
+import com.kodilla.good.patterns.challenges.allegro.data.Product;
 
 import java.util.HashMap;
 import java.util.Map;

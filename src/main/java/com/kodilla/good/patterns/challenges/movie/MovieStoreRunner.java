@@ -1,4 +1,4 @@
-package com.kodilla.good.patterns.challenges.movie_store;
+package com.kodilla.good.patterns.challenges.movie;
 
 public class MovieStoreRunner {
     public static void main(String[] args) {

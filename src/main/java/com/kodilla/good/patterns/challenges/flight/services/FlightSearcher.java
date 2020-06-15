@@ -11,13 +11,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class FlightSearcher implements FlightSearcherService {
-    private Map<AirportRequirements,List<AirportRequirements>> flightsMapClone = new HashMap<>();
-    private List<FlightWithTransfer> availableFlightsWithTransfer = new ArrayList<>();
 
     public boolean prepareFlightList() {
-        flightsMap.clear();
-        flightsMapClone.clear();
-
         Airport warsaw = new Airport("Warsaw");
         Airport london = new Airport("London");
         Airport berlin = new Airport("Berlin");
@@ -43,11 +38,6 @@ public class FlightSearcher implements FlightSearcherService {
         flightsMap.put(berlin,berlinDestinations);
         flightsMap.put(tokyo,tokyoDestinations);
 
-        flightsMapClone.put(warsaw,warsawDestinations);
-        flightsMapClone.put(london,londonDestinations);
-        flightsMapClone.put(berlin,berlinDestinations);
-        flightsMapClone.put(tokyo,tokyoDestinations);
-
         return true;
     }
 
@@ -66,26 +56,24 @@ public class FlightSearcher implements FlightSearcherService {
 
     @Override
     public List<FlightWithTransfer> flightSearcher(AirportRequirements departureAirport, AirportRequirements destinationAirport) {
-        if (!availableFlightsWithTransfer.isEmpty()) {
-            if (availableFlightsWithTransfer.size() > 1
-                    || !availableFlightsWithTransfer.get(0).getDepartureAirport()
-                    .equals(availableFlightsWithTransfer.get(0).getTransferAirport())) {
-                availableFlightsWithTransfer.clear();
-                prepareFlightList();
-            }
+        Map<AirportRequirements,List<AirportRequirements>> flightsMapClone = new HashMap<>();
+        List<FlightWithTransfer> availableFlightsWithTransfer = new ArrayList<>();
+
+        for (Map.Entry<AirportRequirements, List<AirportRequirements>> entryElement : flightsMap.entrySet()) {
+            flightsMapClone.put(entryElement.getKey(),entryElement.getValue());
         }
+
         if (flightsMapClone.entrySet().stream().anyMatch(entry -> entry.getValue().contains(destinationAirport))) {
             if (flightsMapClone.get(departureAirport).contains(destinationAirport)) {
                 availableFlightsWithTransfer.add(new FlightWithTransfer(departureAirport,departureAirport));
                 flightsMapClone.get(departureAirport).remove(destinationAirport);
-                return flightSearcher(departureAirport,destinationAirport);
-            } else {
-                flightsMapClone.get(departureAirport).stream()
-                        .filter(e -> flightsMapClone.get(e).contains(destinationAirport))
-                        .forEach(e -> availableFlightsWithTransfer.add(new FlightWithTransfer(departureAirport,e)));
             }
+            flightsMapClone.get(departureAirport).stream()
+                    .filter(e -> flightsMapClone.get(e).contains(destinationAirport))
+                    .forEach(e -> availableFlightsWithTransfer.add(new FlightWithTransfer(departureAirport,e)));
         }
-        prepareFlightList();
+
+        flightsMap.get(departureAirport).add(destinationAirport);
         return availableFlightsWithTransfer;
     }
 }

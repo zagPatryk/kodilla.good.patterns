@@ -1,6 +1,6 @@
-package com.kodilla.good.patterns.challenges.order_service.services;
+package com.kodilla.good.patterns.challenges.allegro.services;
 
-import com.kodilla.good.patterns.challenges.order_service.data.HasEmailData;
+import com.kodilla.good.patterns.challenges.allegro.data.HasEmailData;
 
 public class MailService implements InformationService {
     @Override
